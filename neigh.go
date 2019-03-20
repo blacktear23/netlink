@@ -5,6 +5,13 @@ import (
 	"net"
 )
 
+type CacheInfo struct {
+	Confirmed int
+	Used      int
+	Updated   int
+	RefCnt    int
+}
+
 // Neigh represents a link layer neighbor from netlink.
 type Neigh struct {
 	LinkIndex    int
@@ -17,7 +24,8 @@ type Neigh struct {
 	LLIPAddr     net.IP //Used in the case of NHRP
 	Vlan         int
 	VNI          int
-	CacheInfo    []byte
+	IFIndex      int
+	CacheInfo    CacheInfo
 }
 
 // String returns $ip/$hwaddr $label

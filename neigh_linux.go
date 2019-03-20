@@ -284,8 +284,10 @@ func NeighDeserialize(m []byte) (*Neigh, error) {
 			} else {
 				neigh.HardwareAddr = net.HardwareAddr(attr.Value)
 			}
+		case NDA_IFINDEX:
+			neigh.IFIndex = int(native.Uint32(attr.Value[0:4]))
 		case NDA_CACHEINFO:
-			neigh.CacheInfo = attr.Value
+			neigh.CacheInfo = *deserializeCacheInfo(attr.Value)
 		case NDA_VLAN:
 			neigh.Vlan = int(native.Uint16(attr.Value[0:2]))
 		case NDA_VNI:
@@ -294,6 +296,15 @@ func NeighDeserialize(m []byte) (*Neigh, error) {
 	}
 
 	return &neigh, nil
+}
+
+func deserializeCacheInfo(value []byte) *CacheInfo {
+	return &CacheInfo{
+		Confirmed: int(native.Uint32(value[0:4])),
+		Used:      int(native.Uint32(value[4:8])),
+		Updated:   int(native.Uint32(value[8:12])),
+		RefCnt:    int(native.Uint32(value[12:16])),
+	}
 }
 
 // NeighSubscribe takes a chan down which notifications will be sent

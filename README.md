@@ -20,15 +20,15 @@ functionality like ipsec xfrm handling.
 
 You can use go get command:
 
-    go get github.com/vishvananda/netlink
+    go get github.com/blacktear23/netlink
 
 Testing dependencies:
 
-    go get github.com/vishvananda/netns
+    go get github.com/blacktear23/netns
 
 Testing (requires root):
 
-    sudo -E go test github.com/vishvananda/netlink
+    sudo -E go test github.com/blacktear23/netlink
 
 ## Examples ##
 
@@ -39,7 +39,7 @@ package main
 
 import (
     "fmt"
-    "github.com/vishvananda/netlink"
+    "github.com/blacktear23/netlink"
 )
 
 func main() {
@@ -66,7 +66,7 @@ Add a new ip address to loopback:
 package main
 
 import (
-    "github.com/vishvananda/netlink"
+    "github.com/blacktear23/netlink"
 )
 
 func main() {

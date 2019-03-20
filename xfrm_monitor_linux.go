@@ -3,8 +3,8 @@ package netlink
 import (
 	"fmt"
 
-	"github.com/vishvananda/netlink/nl"
-	"github.com/vishvananda/netns"
+	"github.com/blacktear23/netlink/netns"
+	"github.com/blacktear23/netlink/nl"
 	"golang.org/x/sys/unix"
 )
 

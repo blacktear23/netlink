@@ -12,16 +12,17 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/vishvananda/netns"
+	"github.com/blacktear23/netlink/netns"
 	"golang.org/x/sys/unix"
 )
 
 const (
 	// Family type definitions
-	FAMILY_ALL  = unix.AF_UNSPEC
-	FAMILY_V4   = unix.AF_INET
-	FAMILY_V6   = unix.AF_INET6
-	FAMILY_MPLS = AF_MPLS
+	FAMILY_ALL    = unix.AF_UNSPEC
+	FAMILY_V4     = unix.AF_INET
+	FAMILY_V6     = unix.AF_INET6
+	FAMILY_BRIDGE = unix.AF_BRIDGE
+	FAMILY_MPLS   = AF_MPLS
 	// Arbitrary set value (greater than default 4k) to allow receiving
 	// from kernel more verbose messages e.g. for statistics,
 	// tc rules or filters, or other more memory requiring data.

@@ -3,7 +3,7 @@ DIRS := \
 	nl
 
 DEPS = \
-	github.com/vishvananda/netns \
+	github.com/blacktear23/netns \
 	golang.org/x/sys/unix
 
 uniq = $(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
@@ -19,7 +19,7 @@ $(call goroot,$(DEPS)):
 
 .PHONY: $(call testdirs,$(DIRS))
 $(call testdirs,$(DIRS)):
-	go test -test.exec sudo -test.parallel 4 -timeout 60s -test.v github.com/vishvananda/netlink/$@
+	go test -test.exec sudo -test.parallel 4 -timeout 60s -test.v github.com/blacktear23/netlink/$@
 
 $(call fmt,$(call testdirs,$(DIRS))):
 	! gofmt -l $(subst fmt-,,$@)/*.go | grep -q .

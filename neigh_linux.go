@@ -284,6 +284,8 @@ func NeighDeserialize(m []byte) (*Neigh, error) {
 			} else {
 				neigh.HardwareAddr = net.HardwareAddr(attr.Value)
 			}
+		case NDA_CACHEINFO:
+			neigh.CacheInfo = attr.Value
 		case NDA_VLAN:
 			neigh.Vlan = int(native.Uint16(attr.Value[0:2]))
 		case NDA_VNI:
